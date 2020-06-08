@@ -13,13 +13,16 @@ func main() {
 
 
 	selectOperation()
+
+}
+
+func collectInput() {
 	firstNumber := readint("Enter the first number: ")
 	secondNumber := readint("Enter the second number: ")
 	arithmetic := calculator.Arithmetic{}
 	sum := arithmetic.Add(firstNumber, secondNumber)
 	fmt.Println("The sum of", firstNumber, "and", secondNumber, "is", sum)
 }
-
 
 func readint(prompt string) int {
 	stdin := bufio.NewReader(os.Stdin)
@@ -46,11 +49,11 @@ func selectOperation() {
 		logrus.Fatalln("An Error occurred when receiving input")
 	}
 
-	operator, valid := isValidOperator(operationSelected)
+	_, valid := isValidOperator(operationSelected)
 	if valid {
-		fmt.Println("You chose", operator)
+		collectInput()
 	}
-
+	logrus.Warningln("You entered an incorrect operation")
 }
 
 func isValidOperator(operator string)  (string, bool){
