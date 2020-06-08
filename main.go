@@ -42,8 +42,8 @@ func selectOperation() {
 	var operationSelected string
 	for {
 		_, err := fmt.Fscan(stdin, &operationSelected)
-		if err == nil {
-			fmt.Println("You chose", operationSelected)
+		if err != nil {
+			logrus.Fatalln("An Error occurred when receiving input")
 		}
 	}
 }
