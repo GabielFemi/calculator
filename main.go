@@ -47,3 +47,21 @@ func selectOperation() {
 		}
 	}
 }
+
+func isValidOperator(operator string)  (string, bool){
+	validOperators := []string {"+", "-", "/", "x"}
+	if Find(validOperators, operator) {
+		return operator, true
+	 } else {
+	 	return operator, false
+	}
+}
+
+func Find(slice []string, val string) bool {
+	for _, item := range slice {
+		if item == val {
+			return true
+		}
+	}
+	return false
+}
