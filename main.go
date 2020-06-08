@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"github.com/gabielfemi/calculator/calculator"
 	"github.com/sirupsen/logrus"
 	"os"
 )
@@ -12,7 +13,9 @@ func main() {
 
 	firstNumber := readint("Enter the first number: ")
 	secondNumber := readint("Enter the second number: ")
-	fmt.Println(firstNumber, secondNumber)
+	arithmetic := calculator.Arithmetic{}
+	sum := arithmetic.Add(firstNumber, secondNumber)
+	fmt.Println("The sum of", firstNumber, "and", secondNumber, "is", sum)
 }
 
 
