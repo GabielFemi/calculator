@@ -9,8 +9,10 @@ import (
 )
 
 func main() {
-	logrus.Println("Calculator App")
+	logrus.Println("Calculator App created using Golang")
 
+
+	selectOperation()
 	firstNumber := readint("Enter the first number: ")
 	secondNumber := readint("Enter the second number: ")
 	arithmetic := calculator.Arithmetic{}
@@ -32,4 +34,16 @@ func readint(prompt string) int {
 		logrus.Fatalln("Please enter a number!")
 	}
 	return input
+}
+
+func selectOperation() {
+	fmt.Print("Select your operation (+, -, /, X) : ")
+	stdin := bufio.NewReader(os.Stdin)
+	var operationSelected string
+	for {
+		_, err := fmt.Fscan(stdin, &operationSelected)
+		if err == nil {
+			fmt.Println("You chose", operationSelected)
+		}
+	}
 }
