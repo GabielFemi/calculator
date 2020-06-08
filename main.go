@@ -28,7 +28,7 @@ func readint(prompt string) int {
 		if err == nil && input >= 0 {
 			break
 		}
-		stdin.ReadString('\n')
+		_, _ = stdin.ReadString('\n')
 		logrus.Fatalln("Please enter a number!")
 	}
 	return input
