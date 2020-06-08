@@ -40,12 +40,17 @@ func selectOperation() {
 	fmt.Print("Select your operation (+, -, /, X) : ")
 	stdin := bufio.NewReader(os.Stdin)
 	var operationSelected string
-	for {
-		_, err := fmt.Fscan(stdin, &operationSelected)
-		if err != nil {
-			logrus.Fatalln("An Error occurred when receiving input")
-		}
+
+	_, err := fmt.Fscan(stdin, &operationSelected)
+	if err != nil {
+		logrus.Fatalln("An Error occurred when receiving input")
 	}
+
+	operator, valid := isValidOperator(operationSelected)
+	if valid {
+		fmt.Println("You chose", operator)
+	}
+
 }
 
 func isValidOperator(operator string)  (string, bool){
